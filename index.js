@@ -61,6 +61,8 @@ function getWinners(cbGetFinals) {
             return winners.push(item['Home Team Name']);
         } else if (item['Home Team Goals'] < item['Away Team Goals']) {
             return winners.push(item['Away Team Name']);
+        } else {
+            return winners.push('Nobody');
         };
     });
     return winners;
@@ -75,11 +77,15 @@ Parameters:
  * callback function getYears
  */
 
-function getWinnersByYear( /* code here */ ) {
+function getWinnersByYear(cbGetWinners, cbgetYears) {
+    const whoWonWhen = [];
+    for (let loop = 0; loop < cbGetWinners.length, loop++) {
+        return `In ${cbgetYears[0]}, ${cbGetWinners[0]} won the world cup!`;
+    };
 
 };
 
-getWinnersByYear();
+console.log(getWinnersByYear(getWinners(getFinals), getYears(getFinals)));
 
 /* Task 6: Write a function called `getAverageGoals` that accepts a parameter `data` and returns the the average number of home team goals and away team goals scored per match (Hint: use .reduce and do this in 2 steps) */
 
@@ -90,6 +96,25 @@ function getAverageGoals( /* code here */ ) {
 };
 
 getAverageGoals();
+
+
+
+
+
+
+
+
+
+
+function getAverageGoals(arr) {
+    const aveGoals = arr.reduce(function (accumulator, item) {
+        return Math.round(
+            (accumulator + (item["Home Team Goals"] + item["Away Team Goals"])) / 2
+        );
+    }, 0);
+    return aveGoals;
+}
+console.log(getAverageGoals(fifaData));
 
 /// STRETCH 🥅 //
 
